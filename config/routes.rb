@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :users
   get 'login', to: 'sessions#new'
+  get 'home', to: 'users#new'
   delete 'logout', to: "sessions#destroy"
   resources :sessions, only: [:create]
   

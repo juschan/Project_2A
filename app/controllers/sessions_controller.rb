@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       flash.now.alert ="Invalid login details."
-      render "new"
+      redirect_to posts_path
     end
   end
 
