@@ -19,9 +19,10 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    if (@post.user != params[:user_id])
-      redirect_to home_path
-    end
+    #if (@post.user != params[:user_id])
+    #  redirect_to user_post_path(@post.user_id, @post)
+    #end
+    #redirect_to edit_user_post_path(@post.user_id, @post)
   end
 
   # POST /posts
@@ -42,6 +43,10 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    if @post.user_id != session[:user_id]
+      format.html { render "root", notice: "This post doesn't belong to you!" }
+    end
+    
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
@@ -58,7 +63,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to user_posts_path(session[:user_id]), notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
