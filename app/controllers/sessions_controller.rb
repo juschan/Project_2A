@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    #redirect_to post_path unless session[:user_id]==nil
     render "new"
   end
 
@@ -7,16 +8,19 @@ class SessionsController < ApplicationController
     user=User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path
+      redirect_to home_path
     else
-      flash.now.alert ="Invalid login details."
-      redirect_to posts_path
+      flash.now.alert ="Couldn't sign you in. Please check your email and password."
+      #redirect_to signin_path
+      render "new"
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_path
+    flash.now.alert ="Signed Out"
+    #params[:error]="Signed Out"
+    redirect_to home_path, notice: "Signed out"
   end
 end
 

@@ -9,10 +9,16 @@
 <body>
 
 <% if user_logged_in? %>
-<h3>welcome, <%= current_user.email %></h3>
-  <%= link_to "Logout", logout_path, method: :delete %>
+<h3>Welcome, <%= current_user.email %></h3>
+  <%= link_to 'New Post', new_user_post_path(current_user) %>
+  <%= link_to "Sign Out", sign_out_path, method: :delete %>
 <% else %>
-  <%= link_to "Login", login_path %>
+  <% if !(current_page?(sign_in_path)) %>
+   <%= link_to "Sign In", sign_in_path %>
+  <% end %>
+  <% if !(current_page?(signup_path)) %>
+   <%= link_to "Sign up", signup_path %>
+  <% end %>
 <% end %>
   
 <% flash.each do |name, message| %>
@@ -21,8 +27,8 @@
 </div>
 <% end %>
 
-
 <%= yield %>
+
 
 </body>
 </html>
