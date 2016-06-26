@@ -19,6 +19,9 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    if (@post.user != params[:user_id])
+      redirect_to home_path
+    end
   end
 
   # POST /posts
@@ -31,7 +34,6 @@ class PostsController < ApplicationController
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
-        format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
