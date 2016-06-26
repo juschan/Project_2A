@@ -8,6 +8,20 @@
 </head>
 <body>
 
+<% if user_logged_in? %>
+<h3>Hello, <%= current_user.email %></h3>
+  <%= link_to "Logout", logout_path, method: :delete %>
+<% else %>
+  <%= link_to "Login", login_path %>
+<% end %>
+  
+<% flash.each do |name, message| %>
+<div class ="flash-message flash-message-<%= name %>" >
+  <%= message %>
+</div>
+<% end %>
+
+
 <%= yield %>
 
 </body>
