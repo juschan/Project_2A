@@ -15,11 +15,16 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
-    
+    if session[:user_id] == nil
+      redirect_to home_path, notice: 'You must log in to access this page.'
+    end
   end
 
   # GET /posts/1/edit
   def edit
+    if session[:user_id] == nil
+      redirect_to home_path, notice: 'You must log in to access this page.'
+    end
     #if (@post.user != params[:user_id])
     #  redirect_to user_post_path(@post.user_id, @post)
     #end
