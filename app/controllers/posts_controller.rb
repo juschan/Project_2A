@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    
   end
 
   # GET /posts/1/edit
@@ -32,7 +33,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to user_post_path(session[:user_id], Post.last), notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -76,6 +77,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, session[:user_id])
+      params.require(:post).permit(:title, :body, :user_id)
     end
 end

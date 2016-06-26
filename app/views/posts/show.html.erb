@@ -15,5 +15,5 @@
   <%= @post.user %>
 </p>
 
-<%= link_to 'Edit', edit_user_post_path(@post.user, @post) %> |
-<%= link_to 'Back', user_post_path(@post.user, @post) %>
+<%= link_to 'Edit', edit_user_post_path(1, @post) %> |
+<%= link_to 'Back', posts_path %>

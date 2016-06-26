@@ -24,6 +24,7 @@
   <!--  <%= f.text_field :user_id %>-->
   <!--</div>-->
   <div class="actions">
-    <%= f.submit "Update Post", user_post_path(:user_id) %>
-  </div>
+<%= f.submit "Create Post", user_post_path(session[:user_id]) %>
+<%= f.submit "Update Post", user_post_path(session[:user_id], @post) %>
+ </div>
 <% end %>
