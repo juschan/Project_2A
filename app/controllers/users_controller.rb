@@ -69,7 +69,7 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
       @posts = Post.all
-      @post = Post.where(user_id: current_user.id)
+      @post = Post.where(user_id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
