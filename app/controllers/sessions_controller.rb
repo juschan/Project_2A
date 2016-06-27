@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   def new
     #redirect_to post_path unless session[:user_id]==nil
+    @posts = Post.all
     render "new"
   end
 

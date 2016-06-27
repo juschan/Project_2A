@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @posts = Post.all
   end
 
   # GET /users/1
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @posts = Post.all
   end
 
   # GET /users/1/edit
@@ -66,6 +68,8 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+      @posts = Post.all
+      @post = Post.where(user_id: current_user.id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
