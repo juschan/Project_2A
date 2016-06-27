@@ -17,8 +17,8 @@
   <% @posts = Post.all %>
 
   <tbody class="posts">
-    <% @posts.each do |post| %>
-      <tr>
+    <% @posts.reverse_each do |post| %>
+      <tr class='post'>
         <td><%= post.title %></td>
         <td><%= post.body %></td>
         <td><%= post.user_id %></td>
