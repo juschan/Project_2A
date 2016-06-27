@@ -17,8 +17,8 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @posts = Post.all
-    @user = current_user.id
-    if @user == nil
+    @user = current_user
+    if @user.id == nil
       redirect_to home_path, notice: 'You must log in to access this page.'
     end
   
@@ -73,12 +73,15 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    if @post.user_id != current_user
-      format.html { redirect_to users_path, notice: "This post doesn't belong to you!" }
-    end
-    @post.destroy
+    
     respond_to do |format|
-      format.html { redirect_to user_posts_path(current_user), notice: 'Post was successfully destroyed.' }
+       if session[:user_id] != @post.user_id
+        format.html { redirect_to home_path, notice: "This post doesn't belong to you!" }
+       else 
+        @post.destroy
+        format.html { redirect_to user_posts_path(current_user), notice: 'Post was successfully destroyed.' }
+       end
+      
       format.json { head :no_content }
     end
   end
