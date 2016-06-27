@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @posts = Post.all
     @user = current_user
-    if @user.id == nil
+    if @user == nil
       redirect_to home_path, notice: 'You must log in to access this page.'
     end
   
