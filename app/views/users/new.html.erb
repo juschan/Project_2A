@@ -14,6 +14,8 @@
     </tr>
   </thead>
 
+  <% @posts = Post.all %>
+
   <tbody class="posts">
     <% @posts.each do |post| %>
       <tr>
