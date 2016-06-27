@@ -4,9 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-
     @posts = Post.all
-
   end
 
   # GET /posts/1
@@ -28,9 +26,10 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @posts = Post.all
+    post = Post.find(params[:id])
     if session[:user_id] == nil
       redirect_to home_path, notice: 'You must log in to access this page.'
-    elsif params[:user_id] != current_user
+    elsif post.user_id != current_user.id
       redirect_to home_path, notice: "This post doesn't belong to you!"
     else 
       render "edit"
@@ -74,7 +73,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     if @post.user_id != current_user
-      format.html { render "root", notice: "This post doesn't belong to you!" }
+      format.html { redirect_to users_path, notice: "This post doesn't belong to you!" }
     end
     @post.destroy
     respond_to do |format|
