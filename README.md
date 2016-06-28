@@ -1,29 +1,25 @@
-<<<<<<< HEAD
+# Project_2A - Posties
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+This is a simple blog app which allows users to view, create, edit and delete blog posts. Blog posts have a title and body (of content). 
 
+The development is done in a test-driven manner based on test files provided in the 'spec' folder.
 
-Welcome to your Rails project on Cloud9 IDE!
+The app is currently hosted on the Heroku platform: [Posties](https://intense-river-14194.herokuapp.com/)
 
-To get started, just do the following:
+###Technology
+The technology used include:
 
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://proj2-juschan.c9users.io/).
+- Ruby on Rails (ruby 2.3.0p0, rails 4.2.5);
+- Boostrap 3.3;
+- Postgres (in production);
 
-Happy coding!
-The Cloud9 IDE team
+The development was done on Cloud9 platform using sqlite3 database. 
 
 
-## Support & Documentation
+###How it works
 
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
-=======
-# Project_2A
-Project 2A
->>>>>>> 33494b425041fa15812102023b6439a44edcfdf8
+By default, users are shown a list of all blog posts, and are able to view them individually.
+
+Users can create their own accounts through 'Sign Up' functionality. When logging into their accounts, they are then able to create, edit and destroy blog posts. 
+
+
