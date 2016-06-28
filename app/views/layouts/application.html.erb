@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="container">
 <% if user_logged_in? %>
 <h3>Welcome, <%= current_user.email %></h3>
   <%= link_to 'New Post', new_user_post_path(current_user) %>
@@ -29,6 +29,6 @@
 
 <%= yield %>
 
-
+</div>
 </body>
 </html>
