@@ -1,34 +1,3 @@
-<h1>New User</h1>
+<h1>Sign Up</h1>
 
 <%= render 'form' %>
-
-<h1>Listing Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <% @posts = Post.all %>
-
-  <tbody class="posts">
-    <% @posts.reverse_each do |post| %>
-      <tr class='post'>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= link_to 'Show', user_post_path(post.user_id, post) %></td>
-        <td><%= link_to 'Edit', edit_user_post_path(post.user_id, post) %></td>
-        <td><%= link_to 'Destroy', user_post_path(post.user_id, post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'Back', users_path %> | 
-<%= link_to 'New Post', new_user_post_path(session[:user_id]) %>
