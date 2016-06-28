@@ -6,28 +6,51 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body data-spy="scroll" data-target=".navbar" data-offset="60">
+  
+  
+<nav class="navbar navbar-default navbar-fixed-top">  
 <div class="container">
+
+<div class="navbar-header">
+  <h1>POSTIES</h1>
+</div>
+
+<div class="collapse navbar-collapse" id="myNavbar">
+<ul class="nav navbar-nav navbar-right">
 <% if user_logged_in? %>
 <h3>Welcome, <%= current_user.email %></h3>
-  <%= link_to 'New Post', new_user_post_path(current_user) %>
-  <%= link_to "Sign Out", sign_out_path, method: :delete %>
+  <li><%= link_to 'New Post', new_user_post_path(current_user) %></li>
+ <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
 <% else %>
   <% if !(current_page?(sign_in_path)) %>
-   <%= link_to "Sign In", sign_in_path %>
+  <li> <%= link_to "Sign In", sign_in_path %></li>
   <% end %>
   <% if !(current_page?(signup_path)) %>
-   <%= link_to "Sign up", signup_path %>
+   <li><%= link_to "Sign up", signup_path %></li>
   <% end %>
 <% end %>
+</ul>
+</div>
+</nav>
   
+<div class="container-fluid">  
 <% flash.each do |name, message| %>
 <div class ="flash-message flash-message-<%= name %>" >
   <%= message %>
 </div>
 <% end %>
+</div>
 
+<div class="container-fluid">
+<div class="row"> 
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
 <%= yield %>
+</div>
+<div class="col-sm-2"></div>
+</div>
+</div>
 
 </div>
 </body>
