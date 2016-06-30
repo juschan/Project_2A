@@ -45,6 +45,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem "rspec-rails", "3.5.0.beta4"
   gem "rails-erd"
+  gem 'sqlite3' , '~> 1.3.11'
 end
 
 group :test do
@@ -52,5 +53,6 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'sqlite3' , '~> 1.3.11'
 end
 
